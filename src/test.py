@@ -133,7 +133,6 @@ if __name__ == '__main__':
                     kitti_bev_utils.drawRotatedBox(img_bev, x, y, w, l, yaw, cnf.colors[int(cls_pred)])
 
             img_rgb = cv2.imread(img_paths[0])
-            cv2.imshow('image',img_rgb)
             calib = kitti_data_utils.Calibration(img_paths[0].replace(".png", ".txt").replace("image_2", "calib"))
             objects_pred = predictions_to_kitti_format(img_detections, calib, img_rgb.shape, configs.img_size)
             print(objects_pred)
