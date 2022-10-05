@@ -158,7 +158,7 @@ class Calibration(object):
 
         return {'P2': P2.reshape(3, 4),
                 'P3': P3.reshape(3, 4),
-                'R_rect': R0.reshape(3, 3),
+                'R_rect': R0.reshape(3, 4),
                 'Tr_velo2cam': Tr_velo_to_cam.reshape(3, 4)}
 
     def cart2hom(self, pts_3d):
