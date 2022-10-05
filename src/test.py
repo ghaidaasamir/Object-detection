@@ -148,15 +148,11 @@ if __name__ == '__main__':
                 if configs.output_format == 'image':
                     img_fn = os.path.basename(img_paths[0])[:-4]
                     cv2.imwrite(os.path.join(configs.results_dir, '{}.jpg'.format(img_fn)), out_img)
-
+                    print('d')
                 else:
                     raise TypeError
 
-            if configs.show_image:
-                cv2.imshow('test-img', out_img)
-                print('\n[INFO] Press n to see the next sample >>> Press Esc to quit...\n')
-                if cv2.waitKey(0) & 0xFF == 27:
-                    break
+            
     if out_cap:
         out_cap.release()
     cv2.destroyAllWindows()
