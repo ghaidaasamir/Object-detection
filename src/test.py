@@ -150,6 +150,7 @@ if __name__ == '__main__':
                     cv2.imwrite(os.path.join(configs.results_dir, '{}.jpg'.format(img_fn)), out_img)
                     cv2.imwrite(os.path.join('kaggle/working/', '{}.jpg'.format(img_fn)), out_img)
                     cv2.imshow('image',out_img)
+                    print(configs.results_dir)
                     print('d')
                 else:
                     raise TypeError
