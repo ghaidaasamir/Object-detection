@@ -144,7 +144,7 @@ if __name__ == '__main__':
             print('\tDone testing the {}th sample, time: {:.1f}ms, speed {:.2f}FPS'.format(batch_idx, (t2 - t1) * 1000,
                                                                                            1 / (t2 - t1)))
             
-            cv2.imwrite('1',out_img)
+            cv2.imwrite('kaggle/working/',out_img)
             print(configs.results_dir)
             cv2.imshow('image',out_img)
             
