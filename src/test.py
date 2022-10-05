@@ -148,15 +148,7 @@ if __name__ == '__main__':
                 if configs.output_format == 'image':
                     img_fn = os.path.basename(img_paths[0])[:-4]
                     cv2.imwrite(os.path.join(configs.results_dir, '{}.jpg'.format(img_fn)), out_img)
-                elif configs.output_format == 'video':
-                    if out_cap is None:
-                        out_cap_h, out_cap_w = out_img.shape[:2]
-                        fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-                        out_cap = cv2.VideoWriter(
-                            os.path.join(configs.results_dir, '{}.avi'.format(configs.output_video_fn)),
-                            fourcc, 30, (out_cap_w, out_cap_h))
 
-                    out_cap.write(out_img)
                 else:
                     raise TypeError
 
