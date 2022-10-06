@@ -343,5 +343,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
         target = kitti_bev_utils.build_yolo_target(labels)
         kitti_bev_utils.draw_box_in_bev(RGB_Map, target)
     print(obj.to_kitti_format())
-    print('objects_new   ',objects_new.to_kitti_format())
+    obj.print_object()
+    image = kitti_data_utils.draw_projected_box3d(img_rgb,corners_3d)
+    cv2.imshow('test-img', image)
     return objects_new
