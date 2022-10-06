@@ -7,6 +7,8 @@
 -----------------------------------------------------------------------------------
 # Description: Testing script
 """
+from google.colab.patches import cv2_imshow
+import matplotlib.pyplot as plt
 
 import argparse
 import sys
@@ -145,6 +147,11 @@ if __name__ == '__main__':
             print('\tDone testing the {}th sample, time: {:.1f}ms, speed {:.2f}FPS'.format(batch_idx, (t2 - t1) * 1000,
                                                                                            1 / (t2 - t1)))
             
+            plt.figure()
+            plt.imshow(img_rgb) 
+            plt.show()  # display it
+            
+            cv2_imshow(img_rgb)
             cv2.imshow('image',img_rgb)
             cv2.imwrite('kaggle/working/',out_img)
             print(configs.results_dir)
