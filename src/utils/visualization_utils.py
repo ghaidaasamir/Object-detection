@@ -314,6 +314,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
 
         _, corners_3d = kitti_data_utils.compute_box_3d(obj, calib.P)
         corners3d.append(corners_3d)
+        print('corners3d ',corners3d)
         objects_new.append(obj)
 
     if len(corners3d) > 0:
@@ -324,11 +325,11 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
         img_boxes[:, 1] = np.clip(img_boxes[:, 1], 0, img_shape_2d[0] - 1)
         img_boxes[:, 2] = np.clip(img_boxes[:, 2], 0, img_shape_2d[1] - 1)
         img_boxes[:, 3] = np.clip(img_boxes[:, 3], 0, img_shape_2d[0] - 1)
-
+        print('img_boxes ',img_boxes)
         img_boxes_w = img_boxes[:, 2] - img_boxes[:, 0]
         img_boxes_h = img_boxes[:, 3] - img_boxes[:, 1]
         box_valid_mask = np.logical_and(img_boxes_w < img_shape_2d[1] * 0.8, img_boxes_h < img_shape_2d[0] * 0.8)
-        print('box_valid_mask ',box_valid_mask)
+
     for i, obj in enumerate(objects_new):
         x, z, ry = obj.t[0], obj.t[2], obj.ry
         beta = np.arctan2(z, x)
@@ -336,7 +337,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
 
         obj.alpha = alpha
         obj.box2d = img_boxes[i, :]
-
+        print('img_boxes[i, :] ',img_boxes[i, :])
     if RGB_Map is not None:
         labels, noObjectLabels = kitti_bev_utils.read_labels_for_bevbox(objects_new)
         if not noObjectLabels:
