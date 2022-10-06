@@ -325,7 +325,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
         img_boxes_w = img_boxes[:, 2] - img_boxes[:, 0]
         img_boxes_h = img_boxes[:, 3] - img_boxes[:, 1]
         box_valid_mask = np.logical_and(img_boxes_w < img_shape_2d[1] * 0.8, img_boxes_h < img_shape_2d[0] * 0.8)
-
+    print(str,img_boxes_w,img_boxes_h,img_boxes,obj.h,obj.w,obj.l,obj.t,obj.ry)
     for i, obj in enumerate(objects_new):
         x, z, ry = obj.t[0], obj.t[2], obj.ry
         beta = np.arctan2(z, x)
@@ -333,7 +333,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
 
         obj.alpha = alpha
         obj.box2d = img_boxes[i, :]
-
+        
     if RGB_Map is not None:
         labels, noObjectLabels = kitti_bev_utils.read_labels_for_bevbox(objects_new)
         if not noObjectLabels:
