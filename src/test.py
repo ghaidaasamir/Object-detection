@@ -137,7 +137,7 @@ if __name__ == '__main__':
             calib = kitti_data_utils.Calibration(img_paths[0].replace(".png", ".txt").replace("image_2", "calib"))
             objects_pred = predictions_to_kitti_format(img_detections, calib, img_rgb.shape, configs.img_size)
             final_obj = kitti_data_utils.Object3d(objects_pred)
-            print('pred ',final_obj.to_kitti_format())
+            
             img_rgb = show_image_with_boxes(img_rgb, objects_pred, calib, False)
 
             img_bev = cv2.flip(cv2.flip(img_bev, 0), 1)
