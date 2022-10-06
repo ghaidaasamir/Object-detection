@@ -150,9 +150,9 @@ class Calibration(object):
         P2 = np.array(obj, dtype=np.float32)
         obj = lines[3].strip().split(' ')[1:]
         P3 = np.array(obj, dtype=np.float32)
-        obj = lines[4].strip().split(' ')[1:]
-        R0 = np.array(obj, dtype=np.float32)
         obj = lines[5].strip().split(' ')[1:]
+        R0 = np.array(obj, dtype=np.float32)
+        obj = lines[6].strip().split(' ')[1:]
         Tr_velo_to_cam = np.array(obj, dtype=np.float32)
         print('P2', P2, ' P3', P3, ' R_rect', R0,' Tr_velo2cam', Tr_velo_to_cam)
         return {'P2': P2.reshape(3, 4),
