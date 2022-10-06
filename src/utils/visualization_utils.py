@@ -338,6 +338,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
         obj.alpha = alpha
         obj.box2d = img_boxes[i, :]
         print('img_boxes[i, :] ',img_boxes[i, :])
+        print(x, z, ry,beta,alpha)
     if RGB_Map is not None:
         labels, noObjectLabels = kitti_bev_utils.read_labels_for_bevbox(objects_new)
         if not noObjectLabels:
