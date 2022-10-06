@@ -282,7 +282,7 @@ def invert_target(targets, calib, img_shape_2d, RGB_Map=None):
     return objects_new
 
 
-def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, RGB_Map=None,path):
+def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size,path, RGB_Map=None):
     predictions = []
     for detections in img_detections:
         if detections is None:
