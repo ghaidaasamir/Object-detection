@@ -311,7 +311,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
         obj.t = l[1:4]
         obj.h, obj.w, obj.l = l[4:7]
         obj.ry = np.arctan2(math.sin(l[7]), math.cos(l[7]))
-        print('obj.t ',obj.t,obj.h,obj.w,obj.l,obj.t.ry)
+        print('obj.t ',obj.t,obj.h,obj.w,obj.l,obj.t,obj.ry)
         _, corners_3d = kitti_data_utils.compute_box_3d(obj, calib.P)
         corners3d.append(corners_3d)
         print('corners3d ',corners3d)
