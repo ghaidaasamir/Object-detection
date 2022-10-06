@@ -144,7 +144,7 @@ if __name__ == '__main__':
 
             print('\tDone testing the {}th sample, time: {:.1f}ms, speed {:.2f}FPS'.format(batch_idx, (t2 - t1) * 1000,
                                                                                            1 / (t2 - t1)))
-
+            """
             if configs.save_test_output:
                 if configs.output_format == 'image':
                     img_fn = os.path.basename(img_paths[0])[:-4]
@@ -166,6 +166,7 @@ if __name__ == '__main__':
                 print('\n[INFO] Press n to see the next sample >>> Press Esc to quit...\n')
                 if cv2.waitKey(0) & 0xFF == 27:
                     break
+            """
     if out_cap:
         out_cap.release()
     cv2.destroyAllWindows()
