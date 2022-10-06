@@ -7,7 +7,6 @@
 -----------------------------------------------------------------------------------
 # Description: Testing script
 """
-from google.colab.patches import cv2_imshow
 import matplotlib.pyplot as plt
 
 import argparse
@@ -141,7 +140,9 @@ if __name__ == '__main__':
             img_rgb = show_image_with_boxes(img_rgb, objects_pred, calib, False)
 
             img_bev = cv2.flip(cv2.flip(img_bev, 0), 1)
-
+            cv2.imshow('image',img_rgb)
+            cv2.imshow('image',img_bev)
+            print('h1')
             out_img = merge_rgb_to_bev(img_rgb, img_bev, output_width=608)
 
             print('\tDone testing the {}th sample, time: {:.1f}ms, speed {:.2f}FPS'.format(batch_idx, (t2 - t1) * 1000,
@@ -150,8 +151,8 @@ if __name__ == '__main__':
             plt.figure()
             plt.imshow(img_rgb) 
             plt.show()  # display it
-            
-            cv2_imshow(img_rgb)
+            print('h2')
+
             cv2.imshow('image',img_rgb)
             cv2.imwrite('kaggle/working/',out_img)
             print(configs.results_dir)
