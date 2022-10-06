@@ -40,7 +40,6 @@ class Object3d(object):
         self.score = data[15] if data.__len__() == 16 else -1.0
         self.level_str = None
         self.level = self.get_obj_level()
-        print('kitti_data_utils ',self.type,self.truncation,self.occlusion,self.box2d ,self.h,self.w,self.l,self.t,self.ry,self.score)
     def cls_type_to_id(self, cls_type):
         # Car and Van ==> Car class
         # Pedestrian and Person_Sitting ==> Pedestrian Class
