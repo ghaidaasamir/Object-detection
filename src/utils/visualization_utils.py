@@ -4,12 +4,16 @@ import math
 import numpy as np
 import mayavi.mlab as mlab
 import cv2
+import os
+
 
 sys.path.append('../')
 
 from data_process import kitti_data_utils, kitti_bev_utils, transformation
 import config.kitti_config as cnf
+directory = os.getcwd()
 
+print(directory)
 
 def draw_lidar_simple(pc, color=None):
     ''' Draw lidar points. simplest set up. '''
@@ -278,7 +282,7 @@ def invert_target(targets, calib, img_shape_2d, RGB_Map=None):
     return objects_new
 
 
-def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, RGB_Map=None):
+def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, RGB_Map=None,path):
     predictions = []
     for detections in img_detections:
         if detections is None:
@@ -325,7 +329,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
         img_boxes_w = img_boxes[:, 2] - img_boxes[:, 0]
         img_boxes_h = img_boxes[:, 3] - img_boxes[:, 1]
         box_valid_mask = np.logical_and(img_boxes_w < img_shape_2d[1] * 0.8, img_boxes_h < img_shape_2d[0] * 0.8)
-        
+    df = open('text file {path}'.format(path),'w')
     for i, obj in enumerate(objects_new):
         x, z, ry = obj.t[0], obj.t[2], obj.ry
         beta = np.arctan2(z, x)
@@ -333,7 +337,10 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
 
         obj.alpha = alpha
         obj.box2d = img_boxes[i, :]
-        
+        print(obj.to_kitti_format())
+        df.write(obj.to_kitti_format())
+        df.write('\n')
+    df.close()
     if RGB_Map is not None:
         labels, noObjectLabels = kitti_bev_utils.read_labels_for_bevbox(objects_new)
         if not noObjectLabels:
@@ -342,7 +349,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
 
         target = kitti_bev_utils.build_yolo_target(labels)
         kitti_bev_utils.draw_box_in_bev(RGB_Map, target)
-    print(obj.to_kitti_format())
+    
 
     
     return objects_new
