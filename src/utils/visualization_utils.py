@@ -286,11 +286,12 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size, R
         # Rescale boxes to original image
         for x, y, w, l, im, re, *_, cls_pred in detections:
             predictions.append([cls_pred, x / img_size, y / img_size, w / img_size, l / img_size, im, re])
-
+    print('p111v ',predictions)
     predictions = kitti_bev_utils.inverse_yolo_target(np.array(predictions), cnf.boundary)
+    print('p222v ',predictions)
     if predictions.shape[0]:
         predictions[:, 1:] = transformation.lidar_to_camera_box(predictions[:, 1:], calib.V2C, calib.R0, calib.P)
-
+    print('p333v ',predictions)
     objects_new = []
     corners3d = []
     for index, l in enumerate(predictions):
