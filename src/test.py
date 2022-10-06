@@ -127,6 +127,7 @@ if __name__ == '__main__':
                     continue
                 # Rescale boxes to original image
                 detections = rescale_boxes(detections, configs.img_size, img_bev.shape[:2])
+                print('detections ',detections)
                 for x, y, w, l, im, re, *_, cls_pred in detections:
                     yaw = np.arctan2(im, re)
                     # Draw rotated box
