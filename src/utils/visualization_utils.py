@@ -242,6 +242,7 @@ def invert_target(targets, calib, img_shape_2d, RGB_Map=None):
         obj.ry = np.arctan2(math.sin(l[7]), math.cos(l[7]))
 
         _, corners_3d = kitti_data_utils.compute_box_3d(obj, calib.P)
+        print('corners_3d ',corners_3d)
         corners3d.append(corners_3d)
         objects_new.append(obj)
 
