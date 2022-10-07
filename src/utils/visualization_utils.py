@@ -341,7 +341,6 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size,pa
 
         obj.alpha = alpha
         obj.box2d = img_boxes[i, :]
-        print(obj.to_kitti_format())
         df.write(obj.to_kitti_format())
         df.write('\n')
     df.close()
