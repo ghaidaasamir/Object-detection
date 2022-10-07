@@ -1,17 +1,17 @@
 # Complex YOLOv4 3d Object detection
+# Yolov5 Pedestrians and Crosswalks detection
+
+1. The PyTorch Implementation based on YOLOv4 of the paper: [Complex-YOLO: Real-time 3D Object Detection on Point Clouds](https://arxiv.org/pdf/1803.06199.pdf)<br/>
+Comlpex Yolov4 used for 3D object detection to detect cars using pretrained model, trained on kitti dataset<br/>
+3D object car detection notebook<br/>
+2. This notebook is used to detect pedestrians, crosswalks and whether it's safe for cars to cross the crosswalk using green bounding boxes or unsafe to cross using red bounding boxes.<br/>
+Yolov5 weights is used for detection of pedestrians <br/>
+Training on custom dataset obtained using roboflow tool to detect crosswalks<br/>
+Yolov5 custom weights (best.pt) weights is used for detection of crosswalks<br/>
+TensorBoard tool is used for providing the measurements and visualizations needed during the training workflow for tracking experiment metrics like loss and accuracy and precision/recall graphs.<br/>
+Pedestrians and Crosswalks detection notebook<br/>
 
 
-The PyTorch Implementation based on YOLOv4 of the paper: [Complex-YOLO: Real-time 3D Object Detection on Point Clouds](https://arxiv.org/pdf/1803.06199.pdf)
-
----
-
-## Installation
-
-**Clone the project and install requirements**
-
-```shell script
-pip install -U -r requirements.txt
-```
 
 ## Data Preparation
 3D KITTI detection dataset  [here](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d).
@@ -21,14 +21,13 @@ pip install -U -r requirements.txt
 - Camera calibration matrices of object data set _**(16 MB)**_: for visualization of predictions
 - Left color images of object data set _**(12 GB)**_: for visualization of predictions
 
-## How to run
+Crosswalk dataset
 
-```shell script
-cd src/data_process
-```
+- 20 images and labels for training
+- 9 images and labels for validation  
+- 100 images for testing
 
-
-## Folder structure
+## Folder structure for Complex YOLOv4 3d Object detection
 
 ```
 ${ROOT}
@@ -89,6 +88,8 @@ ${ROOT}
 ```
 
 ## Results
+
+Output folder containg text files of the bounding boxes of test images
 
 Data Format Description
 =======================
