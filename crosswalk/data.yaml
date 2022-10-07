@@ -1,0 +1,5 @@
+train: /content/drive/MyDrive/crosswalk_/train/images
+val: /content/drive/MyDrive/crosswalk_/valid/images
+
+nc: 1
+names: ['crosswalk']
