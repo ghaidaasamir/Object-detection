@@ -329,6 +329,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size,pa
         img_boxes_w = img_boxes[:, 2] - img_boxes[:, 0]
         img_boxes_h = img_boxes[:, 3] - img_boxes[:, 1]
         box_valid_mask = np.logical_and(img_boxes_w < img_shape_2d[1] * 0.8, img_boxes_h < img_shape_2d[0] * 0.8)
+      
     print(path)
     name = path.split("/")[-1]
     print(name)
