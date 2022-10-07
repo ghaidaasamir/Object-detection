@@ -333,7 +333,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size,pa
     print(path)
     name = path.split("/")[-1]
     print(name)
-    df = open('text file{name}'.format(name,'w')
+    df = open('text file{name}'.format(name),'w')
     for i, obj in enumerate(objects_new):
         x, z, ry = obj.t[0], obj.t[2], obj.ry
         beta = np.arctan2(z, x)
