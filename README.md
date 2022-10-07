@@ -1,25 +1,27 @@
 # Complex YOLOv4 3d Object detection
+
+The PyTorch Implementation based on YOLOv4 of the paper: [Complex-YOLO: Real-time 3D Object Detection on Point Clouds](https://arxiv.org/pdf/1803.06199.pdf)<br/>
+Comlpex Yolov4 used for 3D object detection to detect cars using pretrained model, trained on kitti dataset<br/>
+**3D object car detection notebook**<br/>
 # Yolov5 Pedestrians and Crosswalks detection
 
-1. The PyTorch Implementation based on YOLOv4 of the paper: [Complex-YOLO: Real-time 3D Object Detection on Point Clouds](https://arxiv.org/pdf/1803.06199.pdf)<br/>
-Comlpex Yolov4 used for 3D object detection to detect cars using pretrained model, trained on kitti dataset<br/>
-3D object car detection notebook<br/>
-2. This notebook is used to detect pedestrians, crosswalks and whether it's safe for cars to cross the crosswalk using green bounding boxes or unsafe to cross using red bounding boxes.<br/>
+Detection of pedestrians, crosswalks and whether it's safe for cars to cross the crosswalk using green bounding boxes or unsafe to cross using red bounding boxes.<br/>
 Yolov5 weights is used for detection of pedestrians <br/>
 Training on custom dataset obtained using roboflow tool to detect crosswalks<br/>
-Yolov5 custom weights (best.pt) weights is used for detection of crosswalks<br/>
+Yolov5 custom trained weights (best.pt) weights is used for detection of crosswalks<br/>
 TensorBoard tool is used for providing the measurements and visualizations needed during the training workflow for tracking experiment metrics like loss and accuracy and precision/recall graphs.<br/>
-Pedestrians and Crosswalks detection notebook<br/>
+**Pedestrians and Crosswalks detection notebook**<br/>
 
 
 
 ## Data Preparation
+
 3D KITTI detection dataset  [here](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d).
 
-- Velodyne point clouds _**(29 GB)**_: input data to the Complex-YOLO model
-- Training labels of object data set _**(5 MB)**_: input label to the Complex-YOLO model
-- Camera calibration matrices of object data set _**(16 MB)**_: for visualization of predictions
-- Left color images of object data set _**(12 GB)**_: for visualization of predictions
+- Camera calibration matrices of object data set (16 MB)
+- Training labels of object data set (5 MB)
+- Velodyne point clouds (29 GB)
+- Left color images of object data set (12 GB)
 
 Crosswalk dataset
 
@@ -89,22 +91,19 @@ ${ROOT}
 
 ## Results
 
-Output folder containg text files of the bounding boxes of test images
+1. Output1 folder containg text files of 3d object detection bounding boxes  of test images<br/>
+2. Output2 folder containg detected pedestrians and crosswalks test images<br/>
 
-Data Format Description
-=======================
-The data for training can be found in the corresponding folders.
-The sub-folders are structured as follows:
+Data Format Description for 3d object detection 
+===================================================
+The data for training can be found in the corresponding folders.<br/>
+The sub-folders are structured as follows:<br/>
 
-  - image_02/ contains the left color camera images (png)
-  - label_02/ contains the left color camera label files (plain text files)
-  - calib/ contains the calibration for all five cameras (plain text file)
-  - velodyne/ contains the velodyne point cloud (bin)
-
-The label files contain the following information, which can be read and
-written using the matlab tools (readLabels.m, writeLabels.m) provided within
-this devkit. All values (numerical or strings) are separated via spaces,
-each row corresponds to one object. The 15 columns represent:
+  - image_02/ contains the left color camera images (png)<br/>
+  - label_02/ contains the left color camera label files (plain text files)<br/>
+  - calib/ contains the calibration for all five cameras (plain text file)<br/>
+  - velodyne/ contains the velodyne point cloud (bin)<br/>
+  
 ```
 Values    Name      Description
 ----------------------------------------------------------------------------
@@ -125,14 +124,12 @@ Values    Name      Description
 ```
 
 
+Data Format Description for pedestrians and crosswalk object detection 
+==========================================================================
+The data for training of crosswalk can be found in the corresponding folder.<br/>
+Crosswalk folder:<br/>
 
-
-## Credit
-
-- Complex-YOLO: https://arxiv.org/pdf/1803.06199.pdf<br/>
-YoloV3 Implementation is borrowed from:<br/>
-- https://github.com/eriklindernoren/PyTorch-YOLOv3<br/>
-Point Cloud Preprocessing is based on:<br/>
-- https://github.com/skyhehe123/VoxelNet-pytorch<br/>
-- https://github.com/dongwoohhh/MV3D-Pytorch<br/>
-
+  - images/ contains images of crosswalks<br/>
+  - labels/ contains label files (2d bounding boxes)<br/>
+  - data.yaml/ contains the directory of train and validation data, number and name of classes (crosswalk)<br/>
+ 
