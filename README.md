@@ -104,8 +104,8 @@ The label files contain the following information, which can be read and
 written using the matlab tools (readLabels.m, writeLabels.m) provided within
 this devkit. All values (numerical or strings) are separated via spaces,
 each row corresponds to one object. The 15 columns represent:
-
-#Values    Name      Description
+```
+Values    Name      Description
 ----------------------------------------------------------------------------
    1    type         Describes the type of object: 'Car', 'Van', 'Truck',
                      'Pedestrian', 'Person_sitting', 'Cyclist', 'Tram',
@@ -121,17 +121,17 @@ each row corresponds to one object. The 15 columns represent:
    3    dimensions   3D object dimensions: height, width, length (in meters)
    3    location     3D object location x,y,z in camera coordinates (in meters)
    1    rotation_y   Rotation ry around Y-axis in camera coordinates [-pi..pi]
-
+```
 
 
 
 
 ## Credit
 
-- Complex-YOLO: https://arxiv.org/pdf/1803.06199.pdf
-YoloV3 Implementation is borrowed from:
-- https://github.com/eriklindernoren/PyTorch-YOLOv3
-Point Cloud Preprocessing is based on:
-- https://github.com/skyhehe123/VoxelNet-pytorch
-- https://github.com/dongwoohhh/MV3D-Pytorch
+- Complex-YOLO: https://arxiv.org/pdf/1803.06199.pdf<br/>
+YoloV3 Implementation is borrowed from:<br/>
+- https://github.com/eriklindernoren/PyTorch-YOLOv3<br/>
+Point Cloud Preprocessing is based on:<br/>
+- https://github.com/skyhehe123/VoxelNet-pytorch<br/>
+- https://github.com/dongwoohhh/MV3D-Pytorch<br/>
 
