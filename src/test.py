@@ -79,7 +79,7 @@ def parse_test_configs():
     ####################################################################
     configs.working_dir = '../'
     configs.dataset_dir = os.path.join(configs.working_dir, 'dataset', 'kitti')
-    print(configs.dataset_dir,' test ')
+    print(configs.dataset_dir,' test dataset_dir')
     if configs.save_test_output:
         configs.results_dir = os.path.join(configs.working_dir, 'results', configs.saved_fn)
         make_folder(configs.results_dir)
