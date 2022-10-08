@@ -90,7 +90,7 @@ def parse_test_configs():
 if __name__ == '__main__':
     configs = parse_test_configs()
     configs.distributed = False  # For testing
-    print(configs.dataset_dir,' test dataset_dir')
+    
     model = create_model(configs)
     model.print_network()
     print('\n\n' + '-*=' * 30 + '\n\n')
@@ -111,6 +111,7 @@ if __name__ == '__main__':
     with torch.no_grad():
         for batch_idx, (img_paths, imgs_bev) in enumerate(test_dataloader):
             print(img_paths,' test ')
+            print(configs.dataset_dir,' test dataset_dir')
             input_imgs = imgs_bev.to(device=configs.device).float()
             t1 = time_synchronized()
             outputs = model(input_imgs)
@@ -135,7 +136,7 @@ if __name__ == '__main__':
                     kitti_bev_utils.drawRotatedBox(img_bev, x, y, w, l, yaw, cnf.colors[int(cls_pred)])
 
             img_rgb = cv2.imread(img_paths[0])
-            calib = kitti_data_utils.Calibration(img_paths[0].replace(".png", ".txt").replace("image_2", "calib"))
+            calib = kitti_data_utils.Calibration(img_paths[0].replace(".png", ".txt").replace("images", "calib"))
             objects_pred = predictions_to_kitti_format(img_detections, calib, img_rgb.shape, configs.img_size,img_paths[0])
             
             img_rgb = show_image_with_boxes(img_rgb, objects_pred, calib, False)
