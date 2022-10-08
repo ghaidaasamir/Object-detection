@@ -79,7 +79,7 @@ def parse_test_configs():
     ####################################################################
     configs.working_dir = '../'
     configs.dataset_dir = os.path.join(configs.working_dir, 'dataset', 'kitti')
-    print(configs.dataset_dir,' test dataset_dir')
+    
     if configs.save_test_output:
         configs.results_dir = os.path.join(configs.working_dir, 'results', configs.saved_fn)
         make_folder(configs.results_dir)
@@ -90,7 +90,7 @@ def parse_test_configs():
 if __name__ == '__main__':
     configs = parse_test_configs()
     configs.distributed = False  # For testing
-
+    print(configs.dataset_dir,' test dataset_dir')
     model = create_model(configs)
     model.print_network()
     print('\n\n' + '-*=' * 30 + '\n\n')
