@@ -333,7 +333,7 @@ def predictions_to_kitti_format(img_detections, calib, img_shape_2d, img_size,pa
     name = path.split("/")[-1]
     name = name.split(".")[0]
 
-    os.chdir('../')
+
     df = open('{}.txt'.format(name),'w')
     for i, obj in enumerate(objects_new):
         x, z, ry = obj.t[0], obj.t[2], obj.ry
