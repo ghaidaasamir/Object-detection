@@ -47,7 +47,7 @@ class KittiDataset(Dataset):
         self.mosaic_border = [-self.img_size // 2, -self.img_size // 2]
 
         self.lidar_dir = os.path.join(self.dataset_dir, sub_folder, "velodyne")
-        self.image_dir = os.path.join(self.dataset_dir, sub_folder, "image_2")
+        self.image_dir = os.path.join(self.dataset_dir, sub_folder, "images")
         self.calib_dir = os.path.join(self.dataset_dir, sub_folder, "calib")
         self.label_dir = os.path.join(self.dataset_dir, sub_folder, "label_2")
         split_txt_path = os.path.join(self.dataset_dir, 'ImageSets', '{}.txt'.format(mode))
@@ -233,17 +233,18 @@ class KittiDataset(Dataset):
         return paths, imgs, targets
 
     def get_image(self, idx):
-        img_file = os.path.join(self.image_dir, '{:06d}.png'.format(idx))
+        img_file = os.path.join(self.image_dir, '{:07d}.png'.format(idx))
         # assert os.path.isfile(img_file)
         return cv2.imread(img_file)  # (H, W, C) -> (H, W, 3) OpenCV reads in BGR mode
 
     def get_lidar(self, idx):
-        lidar_file = os.path.join(self.lidar_dir, '{:06d}.bin'.format(idx))
+        lidar_file = os.path.join(self.lidar_dir, '{:07d}.bin'.format(idx))
+        print(lidar_file,'  ',self.lidar_dir)
         # assert os.path.isfile(lidar_file)
         return np.fromfile(lidar_file, dtype=np.float32).reshape(-1, 4)
 
     def get_calib(self, idx):
-        calib_file = os.path.join(self.calib_dir, '{:06d}.txt'.format(idx))
+        calib_file = os.path.join(self.calib_dir, '{:07d}.txt'.format(idx))
         # assert os.path.isfile(calib_file)
         return kitti_data_utils.Calibration(calib_file)
 
