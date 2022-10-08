@@ -51,10 +51,13 @@ class KittiDataset(Dataset):
         self.calib_dir = os.path.join(self.dataset_dir, sub_folder, "calib")
         self.label_dir = os.path.join(self.dataset_dir, sub_folder, "label_2")
         split_txt_path = os.path.join(self.dataset_dir, 'ImageSets', '{}.txt'.format(mode))
+        print('kitti_dataset.py ')
+        print('split_txt_path ',split_txt_path)
         self.image_idx_list = [x.strip() for x in open(split_txt_path).readlines()]
-
+        print('self.image_idx_list ',self.image_idx_list)
         if self.is_test:
             self.sample_id_list = [int(sample_id) for sample_id in self.image_idx_list]
+            print('self.sample_id_list ',self.sample_id_list)
         else:
             self.sample_id_list = self.remove_invalid_idx(self.image_idx_list)
 
@@ -80,7 +83,7 @@ class KittiDataset(Dataset):
         lidarData = self.get_lidar(sample_id)
         b = kitti_bev_utils.removePoints(lidarData, cnf.boundary)
         rgb_map = kitti_bev_utils.makeBVFeature(b, cnf.DISCRETIZATION, cnf.boundary)
-        img_file = os.path.join(self.image_dir, '{:06d}.png'.format(sample_id))
+        img_file = os.path.join(self.image_dir, '{:07d}.png'.format(sample_id))
 
         return img_file, rgb_map
 
@@ -105,7 +108,7 @@ class KittiDataset(Dataset):
         b = kitti_bev_utils.removePoints(lidarData, cnf.boundary)
         rgb_map = kitti_bev_utils.makeBVFeature(b, cnf.DISCRETIZATION, cnf.boundary)
         target = kitti_bev_utils.build_yolo_target(labels)
-        img_file = os.path.join(self.image_dir, '{:06d}.png'.format(sample_id))
+        img_file = os.path.join(self.image_dir, '{:07d}.png'.format(sample_id))
 
         # on image space: targets are formatted as (box_idx, class, x, y, w, l, im, re)
         n_target = len(target)
@@ -249,6 +252,6 @@ class KittiDataset(Dataset):
         return kitti_data_utils.Calibration(calib_file)
 
     def get_label(self, idx):
-        label_file = os.path.join(self.label_dir, '{:06d}.txt'.format(idx))
+        label_file = os.path.join(self.label_dir, '{:07d}.txt'.format(idx))
         # assert os.path.isfile(label_file)
         return kitti_data_utils.read_label(label_file)
