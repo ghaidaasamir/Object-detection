@@ -51,13 +51,10 @@ class KittiDataset(Dataset):
         self.calib_dir = os.path.join(self.dataset_dir, sub_folder, "calib")
         self.label_dir = os.path.join(self.dataset_dir, sub_folder, "label_2")
         split_txt_path = os.path.join(self.dataset_dir, 'ImageSets', '{}.txt'.format(mode))
-        print('kitti_dataset.py ')
-        print('split_txt_path ',split_txt_path)
         self.image_idx_list = [x.strip() for x in open(split_txt_path).readlines()]
-        print('self.image_idx_list ',self.image_idx_list)
+      
         if self.is_test:
             self.sample_id_list = [int(sample_id) for sample_id in self.image_idx_list]
-            print('self.sample_id_list ',self.sample_id_list)
         else:
             self.sample_id_list = self.remove_invalid_idx(self.image_idx_list)
 
@@ -242,7 +239,6 @@ class KittiDataset(Dataset):
 
     def get_lidar(self, idx):
         lidar_file = os.path.join(self.lidar_dir, '{:07d}.bin'.format(idx))
-        print(lidar_file,'  ',self.lidar_dir)
         # assert os.path.isfile(lidar_file)
         return np.fromfile(lidar_file, dtype=np.float32).reshape(-1, 4)
 
