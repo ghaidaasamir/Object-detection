@@ -112,6 +112,7 @@ if __name__ == '__main__':
         for batch_idx, (img_paths, imgs_bev) in enumerate(test_dataloader):
             print(img_paths,' test ')
             print(configs.dataset_dir,' test dataset_dir')
+            print('configs.device ',configs.device)
             input_imgs = imgs_bev.to(device=configs.device).float()
             t1 = time_synchronized()
             outputs = model(input_imgs)
