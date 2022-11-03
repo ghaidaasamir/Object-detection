@@ -89,10 +89,6 @@ ${ROOT}
 └── requirements.txt
 ```
 
-## Results
-
-1. Output1 folder containg text files of 3d object detection bounding boxes  of test images<br/>
-2. Output2 folder containg detected pedestrians and crosswalks test images<br/>
 
 Data Format Description for 3d object detection 
 ===================================================
