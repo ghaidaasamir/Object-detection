@@ -6,10 +6,10 @@ Comlpex Yolov4 used for 3D object detection to detect cars using pretrained mode
 # Yolov5 Pedestrians and Crosswalks detection
 
 Detection of pedestrians, crosswalks and whether it's safe for cars to cross the crosswalk using green bounding boxes or unsafe to cross using red bounding boxes.<br/>
-Yolov5 weights is used for detection of pedestrians <br/>
+Yolov5 weights were used for detection of pedestrians <br/>
 Training on custom dataset obtained using roboflow tool to detect crosswalks<br/>
-Yolov5 custom trained weights (best.pt) weights is used for detection of crosswalks<br/>
-TensorBoard tool is used for providing the measurements and visualizations needed during the training workflow for tracking experiment metrics like loss and accuracy and precision/recall graphs.<br/>
+Yolov5 custom trained weights (best.pt) weights were used for detection of crosswalks<br/>
+TensorBoard tool was used for providing the measurements and visualizations needed during the training workflow for tracking experiment metrics like loss and accuracy and precision/recall graphs.<br/>
 **Pedestrians and Crosswalks detection notebook**<br/>
 
 
